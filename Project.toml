@@ -1,0 +1,4 @@
+[deps]
+CodecZlib = "944b1d66-785c-5afd-91f1-9de20f533193"
+Publish = "f065f642-d108-4f50-8aa5-6749150a895a"
+Tar = "a4e569a6-e804-4fa4-b0f3-eef7a1d5b13e"
