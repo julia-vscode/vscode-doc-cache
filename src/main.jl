@@ -22,10 +22,14 @@ for (package, url) in packages
             folder_path_for_tarball = joinpath(store_path, "f065f642-d108-4f50-8aa5-6749150a895a")
             mkpath(folder_path_for_tarball)
             tarball_path = joinpath(folder_path_for_tarball, "b302581743a08b5a542bba0beac0300360b51742.tar.gz")
-            tar_gz = open(tarball_path, write=true)
-            tar = GzipCompressorStream(tar_gz)
-            Tar.create(joinpath(path, "output"), tar)
-            close(tar)
+            open(tarball_path, write=true) do tar_gz
+                tar = GzipCompressorStream(tar_gz)
+                try
+                    Tar.create(joinpath(path, "output"), tar)
+                finally
+                    close(tar)
+                end
+            end
         end
     end
 end
